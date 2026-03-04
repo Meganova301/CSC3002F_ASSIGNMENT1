@@ -94,14 +94,19 @@ def logged_in(connection):
         send_message(connection, OPTIONS2)
         choice = receive_message(connection)
         if choice == "1":
+            # MARUMO: P2P CONNECTION(EDIT HERE, MARUMO)
             pass
         if choice == "2":
+            # LESEGO: CREATE GROUP(EDIT HERE, LESEGO)
             pass
         if choice == "3":
+            # LESEGO: JOIN GROUP(EDIT HERE, LESEGO)
             pass
         if choice == "4":
+            # Sthembiso: chnage password
             pass
         if choice == "5":
+            # Sthembiso: change username
             pass
         if choice == "6":
             return True

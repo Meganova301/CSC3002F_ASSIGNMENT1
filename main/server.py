@@ -88,23 +88,26 @@ def login(connection):
         logging_in = False
 
 def logged_in(connection):
+    logged_in = True
 #OPTIONS2 = "PLEASE PRESS A NUMBER TO CONTINUE:\n1.P2P CONNECTION\n2.CREATE GROUP\n3.JOIN GROUP\n4.CHANGE PASSWORD\n5.CHANGE USERNAME\n6.RETURN TO HOME PAGE\n7.DISCONNECT" 
-    send_message(connection, OPTIONS2)
-    choice = receive_message(connection)
-    if choice == "1":
-        pass
-    if choice == "2":
-        pass
-    if choice == "3":
-        pass
-    if choice == "4":
-        pass
-    if choice == "5":
-        pass
-    if choice == "6":
-        pass
-    if choice == "7":
-        pass
+    while logged_in:
+        send_message(connection, OPTIONS2)
+        choice = receive_message(connection)
+        if choice == "1":
+            pass
+        if choice == "2":
+            pass
+        if choice == "3":
+            pass
+        if choice == "4":
+            pass
+        if choice == "5":
+            pass
+        if choice == "6":
+            return True
+        if choice == "7":
+            logged_in = False
+    return False
     
 def thread_manage(connection, address):
     print(f"{address} CONNECTED SUCCESSFULLY!!")
@@ -119,6 +122,10 @@ def thread_manage(connection, address):
                 continue
             elif msg == "2":
                 login(connection)
+                is_connected = logged_in(connection)
+                if is_connected == False:
+                    print(f"{address} {DISCONNECT_MESSAGE}")
+                    send_message(connection, DISCONNECT_MESSAGE)
                 continue
             elif msg == "3":
                 print(f"{address} {DISCONNECT_MESSAGE}")

@@ -84,3 +84,4 @@ while is_connected:
                     continue
                 print(receive_message())
                 is_verifying_password = False
+            logging_in = False

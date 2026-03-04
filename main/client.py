@@ -85,10 +85,36 @@ while is_connected:
                 print(receive_message())
                 is_verifying_password = False
             logging_in = False
-
-        options2_menu = receive_message()
-        choice = input(options2_menu)
-        send_message(choice)
+#1.P2P CONNECTION\n2.CREATE GROUP\n3.JOIN GROUP\n4.CHANGE PASSWORD\n5.CHANGE USERNAME\n6.RETURN TO HOME PAGE\n7.DISCONNECT\n" 
+        logged_in = True
+        while logged_in:
+            options2_menu = receive_message()
+            print(options2_menu)
+            choice = input("Enter choice: ")
+            send_message(choice)
+            if choice == "1":
+                #MARUMO: P2P CONNECTION(EDIT HERE, MARUMO)
+                pass
+            if  choice == "2":
+                #LESEGO: CREATE GROUP(EDIT HERE, LESEGO)
+                pass
+            if choice == "3":
+                #LESEGO: JOIN GROUP(EDIT HERE, LESEGO)
+                pass
+            if  choice == "4":
+                #Sthembiso: change password
+                pass
+            if choice == "5":
+                #Sthembiso: change username
+                pass
+            if  choice == "6":
+                logged_in = False
+                continue
+            if choice == "7":
+                logged_in = False
+                logging_in = False
+                resp1 = "3"
+                
     if resp1 == "3":
         print(receive_message())
         is_connected = False

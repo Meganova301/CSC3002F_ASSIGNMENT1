@@ -13,13 +13,14 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(ADDRESS)
 
 OPTIONS1 = "PLEASE PRESS A NUMBER TO CONTINUE:\n1.SIGN-UP\n2.LOGIN\n3.DISCONNECT\nnote:OTHER OPTIONS COMMING?\n"
-OPTIONS2 = "PLEASE PRESS A NUMBER TO CONTINUE:\n1.P2P CONNECTION\n2.CREATE GROUP\n3.JOIN GROUP\n4.CHANGE PASSWORD\n5.CHANGE USERNAME\n6DISCONNECT" 
+OPTIONS2 = "PLEASE PRESS A NUMBER TO CONTINUE:\n1.P2P CONNECTION\n2.CREATE GROUP\n3.JOIN GROUP\n4.CHANGE PASSWORD\n5.CHANGE USERNAME\n6.RETURN TO HOME PAGE\n7.DISCONNECT" 
 INV_INPUT = "INVALID INPUT!! PLEASE TRY AGAIN"
 INV_USER = "THE USER_ID IS INVALID, please try again"
 USERNAME_USED = "THIS USERNAME IS ALREADY IN USE, TRY ANOTHER ONE"
 USERNAME_ACCEPT = "USER NAME ACCEPTED"
 PASSWORD_ACCEPT = "PASSWORD ACCEPTED"
 PASSWORD_WRONG = "WRONG PASSWORD PLEASE TRY AGAIN"
+DISCONNECT_MESSAGE = "DISCONNECT!"
 user_dict = {"12345": "12345"}
 
 def send_message(connection, msg):
@@ -84,8 +85,27 @@ def login(connection):
                     continue
                 else:
                     send_message(connection, PASSWORD_WRONG)
-            logging_in = False
+        logging_in = False
 
+def logged_in(connection):
+#OPTIONS2 = "PLEASE PRESS A NUMBER TO CONTINUE:\n1.P2P CONNECTION\n2.CREATE GROUP\n3.JOIN GROUP\n4.CHANGE PASSWORD\n5.CHANGE USERNAME\n6.RETURN TO HOME PAGE\n7.DISCONNECT" 
+    send_message(connection, OPTIONS2)
+    choice = receive_message(connection)
+    if choice == "1":
+        pass
+    if choice == "2":
+        pass
+    if choice == "3":
+        pass
+    if choice == "4":
+        pass
+    if choice == "5":
+        pass
+    if choice == "6":
+        pass
+    if choice == "7":
+        pass
+    
 def thread_manage(connection, address):
     print(f"{address} CONNECTED SUCCESSFULLY!!")
     is_connected = True
@@ -99,13 +119,14 @@ def thread_manage(connection, address):
                 continue
             elif msg == "2":
                 login(connection)
+                continue
             elif msg == "3":
+                print(f"{address} {DISCONNECT_MESSAGE}")
+                send_message(connection, DISCONNECT_MESSAGE)
                 is_connected = False
                 continue
             else:
                 pass
-
-    print(f"{address} DISCONNECTED!!")
     connection.close()
 
 def begin():

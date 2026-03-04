@@ -85,3 +85,13 @@ while is_connected:
                 print(receive_message())
                 is_verifying_password = False
             logging_in = False
+
+        options2_menu = receive_message()
+        choice = input(options2_menu)
+        send_message(choice)
+    if resp1 == "3":
+        print(receive_message())
+        is_connected = False
+                print(receive_message())
+                is_verifying_password = False
+            logging_in = False

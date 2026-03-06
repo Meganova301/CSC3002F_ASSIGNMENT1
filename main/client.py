@@ -112,8 +112,9 @@ while is_connected:
                 continue
             elif choice == "7":
                 logged_in = False
-                logging_in = False
-                resp1 = "3"
+                print(receive_message())
+                is_connected = False
+                break
 
             else:
                 inv_user = receive_message()

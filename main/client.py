@@ -46,6 +46,9 @@ while is_connected:
             user_id_prompt = receive_message() 
             resp2 = input(user_id_prompt)
             send_message(resp2)
+            if resp2 == "q":
+                signing_up = False
+                continue
             was_user_name_accepted = receive_message()
             print(was_user_name_accepted)
             if was_user_name_accepted == USERNAME_USED:
@@ -54,12 +57,16 @@ while is_connected:
             resp3 = input(password_prompt)
             print(f"your password was: {resp3}")
             send_message(resp3)
+            if resp3 == "q":
+                signing_up = False
+                continue
             print(receive_message())
             signing_up = False
         continue
     
     elif resp1 == "2":
         logging_in = True
+        logged_in = True
         while logging_in:
             is_verifying_user_name = True
             while is_verifying_user_name:
@@ -67,17 +74,27 @@ while is_connected:
                 user_id_prompt = receive_message() 
                 resp2 = input(user_id_prompt)
                 send_message(resp2)
+                if resp2 == "q":
+                    is_verifying_user_name = False
+                    logging_in = False
+                    logged_in = False
+                    continue
                 was_user_name_accepted = receive_message()
                 print(was_user_name_accepted)
                 if was_user_name_accepted == INV_USER:
                     continue
                 is_verifying_user_name = False
+            if logging_in == False:
+                continue
             is_verifying_password = True
             while is_verifying_password:
                 password_prompt = receive_message()
                 resp3 = input(password_prompt)
                 send_message(resp3)
-                is_verifying_password = True
+                if resp3 == "q":
+                    is_verifying_password = False
+                    logged_in = False
+                    continue
                 password_status = receive_message()
                 print(password_status)
                 if password_status == PASSWORD_WRONG:
@@ -85,8 +102,6 @@ while is_connected:
                 print(receive_message())
                 is_verifying_password = False
             logging_in = False
-#1.P2P CONNECTION\n2.CREATE GROUP\n3.JOIN GROUP\n4.CHANGE PASSWORD\n5.CHANGE USERNAME\n6.RETURN TO HOME PAGE\n7.DISCONNECT\n" 
-        logged_in = True
         while logged_in:
             options2_menu = receive_message()
             print(options2_menu)
@@ -115,7 +130,6 @@ while is_connected:
                 print(receive_message())
                 is_connected = False
                 break
-
             else:
                 inv_user = receive_message()
                 print(f"{inv_user}\n")

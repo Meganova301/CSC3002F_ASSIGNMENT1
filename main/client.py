@@ -58,7 +58,7 @@ while is_connected:
             signing_up = False
         continue
     
-    if resp1 == "2":
+    elif resp1 == "2":
         logging_in = True
         while logging_in:
             is_verifying_user_name = True
@@ -95,29 +95,35 @@ while is_connected:
             if choice == "1":
                 #MARUMO: P2P CONNECTION(EDIT HERE, MARUMO)
                 pass
-            if  choice == "2":
+            elif  choice == "2":
                 #LESEGO: CREATE GROUP(EDIT HERE, LESEGO)
                 pass
-            if choice == "3":
+            elif choice == "3":
                 #LESEGO: JOIN GROUP(EDIT HERE, LESEGO)
                 pass
-            if  choice == "4":
+            elif  choice == "4":
                 #Sthembiso: change password
                 pass
-            if choice == "5":
+            elif choice == "5":
                 #Sthembiso: change username
                 pass
-            if  choice == "6":
+            elif  choice == "6":
                 logged_in = False
                 continue
-            if choice == "7":
+            elif choice == "7":
                 logged_in = False
                 logging_in = False
                 resp1 = "3"
-                
-    if resp1 == "3":
+
+            else:
+                inv_user = receive_message()
+                print(f"{inv_user}\n")
+    elif resp1 == "3":
         print(receive_message())
         is_connected = False
                 print(receive_message())
                 is_verifying_password = False
             logging_in = False
+    else:
+        inv_input = receive_message()
+        print(f"{inv_input}\n")

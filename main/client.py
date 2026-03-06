@@ -121,9 +121,6 @@ while is_connected:
     elif resp1 == "3":
         print(receive_message())
         is_connected = False
-                print(receive_message())
-                is_verifying_password = False
-            logging_in = False
     else:
         inv_input = receive_message()
         print(f"{inv_input}\n")

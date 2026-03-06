@@ -96,22 +96,24 @@ def logged_in(connection):
         if choice == "1":
             # MARUMO: P2P CONNECTION(EDIT HERE, MARUMO)
             pass
-        if choice == "2":
+        elif choice == "2":
             # LESEGO: CREATE GROUP(EDIT HERE, LESEGO)
             pass
-        if choice == "3":
+        elif choice == "3":
             # LESEGO: JOIN GROUP(EDIT HERE, LESEGO)
             pass
-        if choice == "4":
+        elif choice == "4":
             # Sthembiso: chnage password
             pass
-        if choice == "5":
+        elif choice == "5":
             # Sthembiso: change username
             pass
-        if choice == "6":
+        elif choice == "6":
             return True
-        if choice == "7":
+        elif choice == "7":
             logged_in = False
+        else:
+            send_message(connection, INV_USER)
     return False
     
 def thread_manage(connection, address):
@@ -138,7 +140,7 @@ def thread_manage(connection, address):
                 is_connected = False
                 continue
             else:
-                pass
+                send_message(connection, INV_INPUT)
     connection.close()
 
 def begin():
